@@ -1,230 +1,566 @@
 # 🛡️ PolicyWise
 
-PolicyWise is a modern insurance management web application built to simplify the process of exploring, comparing, and managing insurance policies. The platform provides an intuitive interface for customers to browse policies, calculate premiums, and interact with an AI-powered chatbot for policy-related assistance.
+**PolicyWise** is a full-stack insurance management platform designed to simplify how customers explore, understand, and manage insurance policies.
 
-This project follows a full-stack architecture with a React frontend, FastAPI backend, and PostgreSQL database.
+The platform provides customers with a centralized interface to browse available policies, view policy details, calculate premiums, and get assistance through an AI-powered chatbot.
+
+The project is built using a **React + TypeScript frontend**, **FastAPI backend**, and **PostgreSQL database**, with a modular architecture designed for future AI, agent, and policy-management capabilities.
 
 ---
 
 ## ✨ Features
 
 ### 👤 Customer Features
-- User Registration & Login
-- Browse Insurance Policies
-- View Detailed Policy Information
-- Premium Calculator
-- AI Chatbot for Policy Assistance
-- Responsive UI
-- Secure Authentication
+
+* 🔐 User registration and authentication
+* 🔑 Secure JWT-based login
+* 📋 Browse available insurance policies
+* 📄 View detailed policy information
+* 🧮 Premium calculation
+* 🤖 AI-powered policy assistance
+* 📱 Responsive user interface
+* 👨‍💼 Connect with insurance agents for assistance
 
 ### 🤖 AI Features
-- AI-powered chatbot for answering insurance-related queries
-- Future-ready architecture for LLM integration (Ollama/OpenAI/Groq)
+
+* AI-powered chatbot for insurance-related queries
+* Architecture prepared for LLM integration
+* Support planned for local and cloud-based models such as:
+
+  * Ollama
+  * OpenAI
+  * Groq
+* Future support for RAG-based insurance knowledge retrieval
+
+### 🔮 Planned Features
+
+* 👨‍💼 LIC Agent Dashboard
+* 🛒 Policy purchase workflow
+* 💳 Payment gateway integration
+* 📑 Claim management
+* 🧠 AI-based policy recommendation
+* 📚 RAG-powered insurance knowledge base
+* 📧 Email and SMS notifications
+* 📊 Admin analytics dashboard
 
 ---
 
-# 🏗️ Tech Stack
+# 🏗️ Architecture
+
+```text
+                    ┌─────────────────────┐
+                    │      Customer       │
+                    │   Web Application   │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │   React Frontend    │
+                    │ TypeScript + Vite   │
+                    └──────────┬──────────┘
+                               │
+                         REST API / HTTP
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │   FastAPI Backend   │
+                    │                     │
+                    │ Authentication      │
+                    │ Policy Management   │
+                    │ Premium Calculator  │
+                    │ AI Integration      │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │     PostgreSQL      │
+                    │      Database       │
+                    └─────────────────────┘
+```
+
+---
+
+# 🛠️ Tech Stack
 
 ## Frontend
-- React.js
-- TypeScript
-- Vite
-- Tailwind CSS
-- React Router
-- Axios
+
+* React.js
+* TypeScript
+* Vite
+* Tailwind CSS
+* React Router
+* Axios
 
 ## Backend
-- FastAPI
-- SQLAlchemy
-- Pydantic
-- JWT Authentication
-- Alembic
-- Uvicorn
+
+* Python 3.12
+* FastAPI
+* SQLAlchemy
+* Pydantic
+* JWT Authentication
+* Alembic
+* Uvicorn
 
 ## Database
-- PostgreSQL
+
+* PostgreSQL
+
+## AI / LLM
+
+The architecture is designed to support:
+
+* Ollama
+* OpenAI
+* Groq
+* RAG pipelines
+* Vector databases
 
 ## Development Tools
-- Git
-- GitHub
-- VS Code
-- Postman
+
+* Git
+* GitHub
+* VS Code
+* Postman
+* PostgreSQL / pgAdmin
 
 ---
 
 # 📂 Project Structure
 
+The repository follows a clean full-stack structure:
+
+```text
+PolicyWise/
+│
+├── backend/
+│   ├── app/
+│   │   ├── ...
+│   │
+│   ├── requirements.txt
+│   ├── .env
+│   └── .venv/
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── ...
+│
+├── .gitignore
+└── README.md
 ```
-policywise
-│
-├── policywise_backend
-│   └── policywise_backend
-│       ├── app
-│       ├── requirements.txt
-│       ├── .env
-│       └── README.md
-│
-├── policywise_frontend_connected
-│   └── policywise
-│       ├── src
-│       ├── public
-│       ├── package.json
-│       └── .env
-│
-└── .gitignore
-```
+
+> `.venv`, `node_modules`, and environment files are excluded from Git through `.gitignore`.
 
 ---
 
-# ⚙️ Installation
+# ⚙️ Local Development Setup
 
-## 1. Clone Repository
+## Prerequisites
 
-```bash
-git clone https://github.com/theYatharthSharma/policywise.git
+Make sure you have the following installed:
 
-cd policywise
-```
+* Python **3.12**
+* Node.js
+* npm
+* PostgreSQL
+* Git
 
 ---
 
 # 🔧 Backend Setup
 
-Navigate to the backend folder:
+### 1. Navigate to the backend
 
 ```bash
-cd policywise_backend/policywise_backend
+cd backend
 ```
 
-Create Virtual Environment (Python 3.12 Recommended)
+### 2. Create a Python 3.12 virtual environment
 
-```bash
+Windows:
+
+```powershell
 py -3.12 -m venv .venv
 ```
 
-Activate Virtual Environment
+### 3. Activate the virtual environment
 
-Windows
+Windows PowerShell:
 
-```bash
-.\.venv\Scripts\Activate
+```powershell
+.\.venv\Scripts\Activate.ps1
 ```
 
-Install Dependencies
+You should see:
 
-```bash
+```text
+(.venv)
+```
+
+in your terminal.
+
+### 4. Verify Python
+
+```powershell
+python --version
+```
+
+Expected:
+
+```text
+Python 3.12.x
+```
+
+### 5. Install dependencies
+
+```powershell
 pip install -r requirements.txt
 ```
 
-Run Backend
+### 6. Configure environment variables
 
-```bash
-python -m uvicorn app.main:app --reload
+Create a `.env` file inside the `backend` directory.
+
+Example:
+
+```env
+DATABASE_URL=postgresql://username:password@localhost:5432/policywise
+
+SECRET_KEY=your_secret_key
+
+ALGORITHM=HS256
+
+ACCESS_TOKEN_EXPIRE_MINUTES=30
 ```
 
-Backend URL
+> Never commit your actual `.env` file or database credentials to GitHub.
 
+### 7. Start the backend
+
+From the `backend` directory:
+
+```powershell
+uvicorn app.main:app --reload
 ```
+
+Backend will run at:
+
+```text
 http://127.0.0.1:8000
 ```
 
-Swagger Documentation
+### 8. Open API documentation
 
-```
+FastAPI Swagger UI:
+
+```text
 http://127.0.0.1:8000/docs
+```
+
+Alternative ReDoc documentation:
+
+```text
+http://127.0.0.1:8000/redoc
 ```
 
 ---
 
 # 💻 Frontend Setup
 
-Navigate to frontend
+Open a new terminal.
+
+### 1. Navigate to frontend
+
+From the project root:
 
 ```bash
-cd policywise_frontend_connected/policywise
+cd frontend
 ```
 
-Install Dependencies
+### 2. Install dependencies
 
 ```bash
 npm install
 ```
 
-Run Development Server
+### 3. Start the development server
 
 ```bash
 npm run dev
 ```
 
-Frontend URL
+The frontend will normally be available at:
 
-```
+```text
 http://localhost:5173
 ```
 
 ---
 
-# 🗄️ Database
+# 🗄️ Database Setup
 
-Database Used
+PolicyWise uses **PostgreSQL** for persistent application data.
 
-- PostgreSQL
+Create a PostgreSQL database:
 
-Update the backend `.env` file with your database credentials.
+```sql
+CREATE DATABASE policywise;
+```
 
-Example
+Then configure the connection inside:
+
+```text
+backend/.env
+```
+
+Example:
 
 ```env
-DATABASE_URL=postgresql://policywise_user:policywise_pass@localhost:5432/policywise
-SECRET_KEY=your_secret_key
-ALGORITHM=HS256
-ACCESS_TOKEN_EXPIRE_MINUTES=30
+DATABASE_URL=postgresql://username:password@localhost:5432/policywise
 ```
+
+Database migrations are handled using **Alembic**.
+
+If migrations are configured in the project, run:
+
+```powershell
+cd backend
+alembic upgrade head
+```
+
+---
+
+# 🔐 Authentication
+
+PolicyWise uses JWT-based authentication for protected API endpoints.
+
+The authentication flow is:
+
+```text
+User
+ │
+ ▼
+Registration / Login
+ │
+ ▼
+FastAPI Authentication API
+ │
+ ▼
+Password Verification
+ │
+ ▼
+JWT Access Token
+ │
+ ▼
+Authenticated API Requests
+```
+
+Sensitive credentials and secrets should always be stored in environment variables rather than committed to source control.
+
+---
+
+# 🤖 AI Integration
+
+The PolicyWise AI layer is designed to provide insurance-related assistance through a conversational interface.
+
+The planned architecture allows integration with multiple LLM providers:
+
+```text
+                    User
+                      │
+                      ▼
+                AI Chatbot UI
+                      │
+                      ▼
+                FastAPI Backend
+                      │
+              ┌───────┴────────┐
+              ▼                ▼
+        Knowledge Base       LLM
+              │                │
+              ▼                ▼
+             RAG          Ollama / OpenAI /
+                          Groq / Other LLM
+```
+
+Future iterations can introduce:
+
+* Embedding models
+* Vector databases
+* Retrieval-Augmented Generation (RAG)
+* Policy document ingestion
+* Semantic search
+* Context-aware recommendations
 
 ---
 
 # 🚀 Deployment
 
-## Frontend
+The application can be deployed using:
 
-- Vercel
+### Frontend
 
-## Backend
+* Vercel
 
-- Render
+### Backend
 
-## Database
+* Render
+* Railway
+* AWS
+* Other Python-compatible cloud platforms
 
-- PostgreSQL (Neon, Render PostgreSQL, or Supabase)
+### Database
+
+* PostgreSQL
+* Neon
+* Supabase
+* Render PostgreSQL
+
+Deployment configuration may vary depending on the selected infrastructure.
 
 ---
 
-# 📦 API Documentation
+# 🧪 Development Workflow
 
-After running the backend, interactive API documentation is available at
+Recommended workflow:
 
+```bash
+# Pull latest changes
+git pull
+
+# Create/activate backend environment
+cd backend
+.\.venv\Scripts\Activate.ps1
+
+# Run backend
+uvicorn app.main:app --reload
 ```
-http://127.0.0.1:8000/docs
+
+In another terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev
 ```
 
 ---
 
-# 🔮 Future Enhancements
+# 🔄 Git Workflow
 
-- LIC Agent Dashboard
-- Policy Purchase Workflow
-- Payment Gateway Integration
-- Claim Management
-- AI Recommendation Engine
-- RAG-based Knowledge Base
-- Email & SMS Notifications
-- Admin Analytics Dashboard
+Create a feature branch before making significant changes:
+
+```bash
+git checkout -b feature/your-feature
+```
+
+After completing the feature:
+
+```bash
+git add .
+git commit -m "Add your feature"
+git push -u origin feature/your-feature
+```
+
+Then create a Pull Request on GitHub.
+
+For small personal changes, you can work directly on `main` if the repository workflow allows it.
+
+---
+
+# 🔒 Environment & Security
+
+The following files/directories should **not** be committed:
+
+```text
+.env
+.env.*
+backend/.venv/
+frontend/node_modules/
+frontend/dist/
+__pycache__/
+*.pyc
+```
+
+Never commit:
+
+* Database passwords
+* JWT secret keys
+* API keys
+* LLM provider credentials
+* Access tokens
+* Private credentials
+
+Use `.env.example` to document required environment variables without exposing their values.
+
+---
+
+# 📌 Current Project Status
+
+**Status:** Active Development
+
+PolicyWise currently focuses on the core insurance customer experience:
+
+* User authentication
+* Policy browsing
+* Policy information
+* Premium calculation
+* AI chatbot foundation
+* Full-stack React + FastAPI architecture
+* PostgreSQL database integration
+
+The architecture is being expanded toward a more complete insurance-management platform with dedicated agent workflows and AI-powered capabilities.
+
+---
+
+# 🗺️ Roadmap
+
+### Phase 1 — Core Platform
+
+* [x] React frontend
+* [x] FastAPI backend
+* [x] PostgreSQL integration
+* [x] Authentication
+* [x] Policy browsing
+* [x] Premium calculator
+* [x] Basic AI chatbot interface
+
+### Phase 2 — Agent Platform
+
+* [ ] Agent authentication
+* [ ] Agent dashboard
+* [ ] Customer management
+* [ ] Policy management
+* [ ] Lead management
+* [ ] Agent-customer communication
+* [ ] Agent analytics
+
+### Phase 3 — AI Platform
+
+* [ ] LLM integration
+* [ ] Insurance knowledge base
+* [ ] RAG pipeline
+* [ ] Policy recommendation engine
+* [ ] Intelligent document processing
+* [ ] AI-assisted agent workflows
+
+### Phase 4 — Insurance Operations
+
+* [ ] Policy purchase workflow
+* [ ] Payment integration
+* [ ] Claim management
+* [ ] Notifications
+* [ ] Administrative dashboard
+* [ ] Advanced analytics
 
 ---
 
 # 👨‍💻 Developer
 
 **Yatharth Sharma**
+
+B.Tech IT | AI/ML & Software Development
 
 GitHub:
 https://github.com/theYatharthSharma
@@ -236,35 +572,10 @@ https://www.linkedin.com/in/yatharth-sharma-791167326/
 
 # 📄 License
 
-This project is developed for educational and demonstration purposes.
-
-```
+This project is currently developed for **educational, demonstration, and development purposes**.
 
 ---
 
-## ⭐ One recommendation
+## ⭐ PolicyWise
 
-Your current repository structure is:
-
-```
-policywise/
-│
-├── policywise_backend/
-│   └── policywise_backend/
-│
-└── policywise_frontend_connected/
-    └── policywise/
-```
-
-This works, but it's more nested than necessary. A cleaner layout for future maintenance would be:
-
-```
-policywise/
-│
-├── backend/
-├── frontend/
-├── README.md
-└── .gitignore
-```
-
-You don't need to change it now, especially since you've already pushed it to GitHub. But if you continue developing PolicyWise over the long term, reorganizing to this simpler structure will make the project easier to navigate and deploy.
+> Making insurance simpler, smarter, and easier to understand.
